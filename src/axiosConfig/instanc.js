@@ -13,8 +13,7 @@ const axiosInstance = axios.create({
 
   headers: {
     // 'authorization':"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjI1N2NjM2E0NjEyYzlmNGE4NjEyMjA0ZDZhNGIwYyIsInN1YiI6IjY0MGU2NTcxYjQyMjQyMDA4YTJkYTAzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BgiR1EugUT2ZQnyrgk-_tkCtCY5cNMOPjRY31qhhhPI",
-    authorization:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDBjYjcwZWMxNTIwNWE5NTk0OGIzMjciLCJkaXNwbGF5TmFtZSI6InNhZmEiLCJpYXQiOjE2ODExMzI4ODJ9.Xb5CHrdvSQg5DiFw99Pvt9LWHHgVaGGwNJHC9LqQ5nY",
+    authorization: "",
   },
   params: {
     // 'key':'37838b368bf34ab0bb5403e02b716a84',
