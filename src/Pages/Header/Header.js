@@ -233,15 +233,15 @@ const Header = () => {
                         <div className="py-1">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="/account/setting"
+                              <Link
+                                to="/account/setting"
                                 className={`${classNames(
                                   active ? " text-white" : "text-inherit",
                                   "block px-4 py-2 text-sm"
                                 )} text-center text-xs`}
                               >
                                 {t("signIn-account")}
-                              </a>
+                              </Link>
                             )}
                           </Menu.Item>
 
