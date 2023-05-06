@@ -216,6 +216,8 @@ const epicSlice = createSlice({
     signOut(state, action) {
       state.loggedIn = false;
       localStorage.clear();
+      state.cart = [];
+      state.wishList = [];
       console.log("signedOut");
     },
   },
@@ -265,10 +267,13 @@ const epicSlice = createSlice({
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.loggedIn = true;
+      state.id = action.payload.user._id;
       state.loader = false;
       state.displayName = action.payload.user.displayName;
       state.token = action.payload.token;
       state.email = action.payload.user.email;
+      state.cart = action.payload.user.cart;
+      state.wishList = action.payload.user.wishList;
       localStorage.setItem("user", JSON.stringify(action.payload.user));
       localStorage.setItem("token", action.payload.token);
       console.log(action.payload);

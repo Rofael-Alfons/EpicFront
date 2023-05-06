@@ -12,8 +12,11 @@ const GameCard = (props) => {
   const removeFromCartorWishListHandler = props.removeFromCartorWishListHandler;
   const moveToHandlers = props.moveToHandlers;
   const game = props.game;
+  if (!game.Photos) {
+    return;
+  }
   return (
-    <div className={classes.gameCard}>
+    <div key={game._id} className={classes.gameCard}>
       <Link to={`/gameDetails/${game._id}`}>
         <div className={classes.leftCol}>
           <img className={classes.gamePoster} src={game.Photos[0]} alt="" />

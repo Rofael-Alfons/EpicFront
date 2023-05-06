@@ -15,10 +15,15 @@ const WishList = () => {
   const { t, i18n } = useTranslation();
 
   const dispatch = useDispatch();
-  let id = useSelector((state) => state.epic.id);
-  let loader = useSelector((state) => state.epic.loader);
+  const id = useSelector((state) => state.epic.id);
+  const loader = useSelector((state) => state.epic.loader);
   const [gameRemoved, setGameRemoved] = useState(false);
-  let games = useSelector((state) => state.epic.wishList);
+  const games = useSelector((state) => state.epic.wishList);
+  useEffect(() => {
+    console.log(games);
+    dispatch(getWishList({ id }));
+    console.log(games);
+  }, [gameRemoved]);
   function removeFromWishListHandler(gameId) {
     dispatch(removeFromWishList({ userId: id, gameId }));
     setGameRemoved(!gameRemoved);
@@ -26,9 +31,6 @@ const WishList = () => {
   function addToCartHandler(gameId) {
     dispatch(addToCart({ userId: id, gameId }));
   }
-  useEffect(() => {
-    dispatch(getWishList({ id }));
-  }, [gameRemoved]);
 
   const gamesList = games.map((game) => {
     return (

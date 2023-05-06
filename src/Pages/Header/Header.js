@@ -42,19 +42,19 @@ const Header = () => {
     navigate("/signIn");
   }
 
-  const button = document.querySelector('myMenu_Btn');
-  const menu = document.getElementById('navbar-multi-level');
+  const button = document.querySelector("myMenu_Btn");
+  const menu = document.getElementById("navbar-multi-level");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const handleClick = () =>{
+  const handleClick = () => {
     // menu.classList.toggle('hidden');
     setIsMenuOpen(!isMenuOpen);
-    };
+  };
 
-    const [isHidden, setIsHidden] = useState(false);
-    const handleClick2 = () =>{
+  const [isHidden, setIsHidden] = useState(false);
+  const handleClick2 = () => {
     // menu.classList.toggle('hidden');
     setIsHidden(!isHidden);
-    };
+  };
   //()=>{getElementById(dropdwnl_)}
 
   return (
@@ -85,10 +85,10 @@ const Header = () => {
               </Link>
             </a>
 
-          {/* Menu Btn */}
+            {/* Menu Btn */}
             <button
-            id="myMenu_Btn"
-            onClick={handleClick}
+              id="myMenu_Btn"
+              onClick={handleClick}
               data-collapse-toggle="navbar-multi-level"
               type="button"
               className="relative w-14 h-full m-0 inline-flex md:hidden items-center justify-center p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -190,7 +190,6 @@ const Header = () => {
                           )}
                         </Menu.Item>
                       </div>
-
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -280,7 +279,6 @@ const Header = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-
               </ul>
             </div>
             {/* ))} */}
@@ -295,74 +293,79 @@ const Header = () => {
           {t("downloadButton")}
         </a>
 
-            <nav className={`myMenu ${isMenuOpen ? 'block' : 'hidden'} absolute z-10 mt-14 right-0 p-1 w-36 origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`} style={{ backgroundColor: "#2a2a2a" }}>
-              {/* user */}
-                  <div style={{ color: "#c2c2c2" }} className="flex border-b border-slate-400 border-1">
-                    <button className="inline-flex w-full justify-center gap-x-1.5 bg-transparent pr-8 pl-2 text-sm items-center text-inherit hover:text-white">
-                      {loggedIn ? (
-                        <div className="flex justify-between items-center">
-                          <div className="flex justify-between items-center">
-                            <i className="bi bi-person-fill mx-1 block mt-3 pl-3 pr-4 rounded md:bg-transparent md:p-0 text-xl md:dark:bg-transparent pb-4  text-inherit hover:text-white"></i>
-                            {displayName}
-                          </div>
-                          <div className="w-2 h-2 mx-2 bg-green-600 rounded-full"></div>
-                        </div>
-                      ) : (
-                        <Link to={"/signIn"}>{t("signIn")}</Link>
-                      )}
-                      {/* {t("signIn")} */}
-                    </button>
+        <nav
+          className={`myMenu ${
+            isMenuOpen ? "block" : "hidden"
+          } absolute z-10 mt-14 right-0 p-1 w-36 origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+          style={{ backgroundColor: "#2a2a2a" }}
+        >
+          {/* user */}
+          <div
+            style={{ color: "#c2c2c2" }}
+            className="flex border-b border-slate-400 border-1"
+          >
+            <button className="inline-flex w-full justify-center gap-x-1.5 bg-transparent pr-8 pl-2 text-sm items-center text-inherit hover:text-white">
+              {loggedIn ? (
+                <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center">
+                    <i className="bi bi-person-fill mx-1 block mt-3 pl-3 pr-4 rounded md:bg-transparent md:p-0 text-xl md:dark:bg-transparent pb-4  text-inherit hover:text-white"></i>
+                    {displayName}
                   </div>
+                  <div className="w-2 h-2 mx-2 bg-green-600 rounded-full"></div>
+                </div>
+              ) : (
+                <Link to={"/signIn"}>{t("signIn")}</Link>
+              )}
+              {/* {t("signIn")} */}
+            </button>
+          </div>
 
-              {/* language */}
-                  <button
-                    id="btnhov"
-                    onClick={handleClick2}
-                    className="inline-flex w-full justify-center gap-x-1.5 bg-transparent  text-sm items-center text-inherit hover:text-white"
-                  >
-                    <i className="bi bi-globe-americas block py-2 pl-3 rounded md:bg-transparent md:p-0 md:dark:bg-transparent text-xl pb-2 text-inherit hover:text-white"></i>
-                  </button>
-                      
-                  <section
-                    style={{ backgroundColor: "#2a2a2a" }}
-                    id="dropdwnl_"
-                    className={` ${isHidden ? 'block' : 'hidden'} mt-1 z-10 w-36 origin-top-right border-t border-slate-400 border-1"
-                      `}>
-                    {/*  z-10 mt-2 w-36 origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none */}
-                    <div className="py-1">
-                      <div>
-                        
-                          <a
-                            href="#"
-                            className={`text-inherit hover:text-white block px-4 py-2 text-sm text-center`}
-                            onClick={() => {
-                              i18n.changeLanguage("ar");
-                              currentLanguage = "ar";
-                            }}
-                          >
-                            العربية
-                          </a>
-                        
-                      </div>
-                      <div>
-                        
-                          <a
-                            href="#"
-                            className={`text-inherit hover:text-white block px-4 py-2 text-sm text-center`}
-                            onClick={() => {
-                              i18n.changeLanguage("en");
-                              currentLanguage = "en";
-                            }}
-                          >
-                            English
-                          </a>
-                        
-                      </div>
-                    </div>
-                  
-                  </section>
+          {/* language */}
+          <button
+            id="btnhov"
+            onClick={handleClick2}
+            className="inline-flex w-full justify-center gap-x-1.5 bg-transparent  text-sm items-center text-inherit hover:text-white"
+          >
+            <i className="bi bi-globe-americas block py-2 pl-3 rounded md:bg-transparent md:p-0 md:dark:bg-transparent text-xl pb-2 text-inherit hover:text-white"></i>
+          </button>
 
-            </nav>
+          <section
+            style={{ backgroundColor: "#2a2a2a" }}
+            id="dropdwnl_"
+            className={` ${
+              isHidden ? "block" : "hidden"
+            } mt-1 z-10 w-36 origin-top-right border-t border-slate-400 border-1"
+                      `}
+          >
+            {/*  z-10 mt-2 w-36 origin-top-right rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none */}
+            <div className="py-1">
+              <div>
+                <a
+                  href="#"
+                  className={`text-inherit hover:text-white block px-4 py-2 text-sm text-center`}
+                  onClick={() => {
+                    i18n.changeLanguage("ar");
+                    currentLanguage = "ar";
+                  }}
+                >
+                  العربية
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#"
+                  className={`text-inherit hover:text-white block px-4 py-2 text-sm text-center`}
+                  onClick={() => {
+                    i18n.changeLanguage("en");
+                    currentLanguage = "en";
+                  }}
+                >
+                  English
+                </a>
+              </div>
+            </div>
+          </section>
+        </nav>
       </div>
     </>
   );
