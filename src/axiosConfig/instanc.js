@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 
   // baseURL:'https://api.rawg.io/api/',
 
-  baseURL: "http://localhost:5555",
+  baseURL: "https://iti-final-project.onrender.com",
 
   headers: {
     // 'authorization':"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjI1N2NjM2E0NjEyYzlmNGE4NjEyMjA0ZDZhNGIwYyIsInN1YiI6IjY0MGU2NTcxYjQyMjQyMDA4YTJkYTAzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BgiR1EugUT2ZQnyrgk-_tkCtCY5cNMOPjRY31qhhhPI",
