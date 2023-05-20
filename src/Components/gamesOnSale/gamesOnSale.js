@@ -6,6 +6,7 @@ import Slider from "react-slick";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { getGames } from "../../Store/store";
+import { Link } from "react-router-dom";
 
 export function GamesOnSale() {
   let MyGames = useSelector((state) => state.epic.games);
@@ -32,7 +33,7 @@ export function GamesOnSale() {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: false
+          dots: false,
         },
       },
       {
@@ -42,28 +43,40 @@ export function GamesOnSale() {
           slidesToScroll: 2,
           initialSlide: 2,
           infinite: true,
-          dots: false
+          dots: false,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 640,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1,
           infinite: true,
-          dots: false
+          dots: false,
         },
       },
     ],
   };
 
   return (
-    <div className="container px-4 mx-auto">
-      <h2 className="text-white text-2xl text-left mb-8">{t("gamesOnSale")}</h2>
+    <div className={`container sm:px-10 mx-auto`}>
+      <h2
+        className={`text-white text-2xl mb-12 ${
+          lang === "en" ? "" : "text-right"
+        }`}
+      >
+        {t("gamesOnSale")}
+      </h2>
+
       <Slider {...settings}>
         {MyGames.map((game, index) => {
           return (
-            <div className="card border-0" key={index}>
+            <Link
+              to={`gameDetails/${game._id}`}
+              className="card  border-0"
+              key={index}
+            >
               <div className="p-3">
                 <img
                   className="rounded"
@@ -72,7 +85,6 @@ export function GamesOnSale() {
                 />
                 {/* {lang==='en'?'BASE GAME':'اللعبة الاساسية'} */}
                 <p className="base-game text-left">
-                  
                   {lang === "en" ? "BASE GAME" : "اللعبة الاساسية"}
                 </p>
                 <p className="name text-left">{game.gameName}</p>
@@ -87,7 +99,7 @@ export function GamesOnSale() {
                   Some text about the jeans..
                 </p>
               </div>
-            </div>
+            </Link>
           );
         })}
       </Slider>

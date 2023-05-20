@@ -3,13 +3,18 @@ import styles from "./StoreSlider.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { getGames } from "../../Store/store";
+import Spinner from "../spinner/spinner";
+import { Link } from "react-router-dom";
 
 const StoreSlider = () => {
-  // let gamesEpic = useSelector((state) => state.epic.games.slice(0, 5));
-  // let games = gamesEpic.slice(0, 5);
+  const dispatch = useDispatch();
+  const epicGames = useSelector((state) => state.epic.games.slice(0, 5));
+  const loader = useSelector((state) => state.epic.loader);
+  console.log(loader);
+  console.log(epicGames);
+  // const [games, setGames] = useState([]);
   // console.log(games);
 
-  // const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   var [counter, setCounter] = useState(0);
 
@@ -89,83 +94,102 @@ const StoreSlider = () => {
   };
   let currentLanguage = i18n.language;
   return (
-    <div className={`${styles.sliderWrapper} bg-transparent`}>
-      {/* section start 0_0 */}
-      <div
-        className={`${styles.featured} w-fit bg-transparent ${currentLanguage==='en'?'mr-10':'ml-10'}`}
-        style={{
-          backgroundImage: `url(${games[counter].Photos[0]})`,
-          width: "70vw",
-          height: "80vh",
-          padding: "20px",  
-          borderRadius: "30px",
-        }}
-      >
-        <div className={`${styles.itemText} `}>
-          <h3 className={`bg-transparent text-white text-xl ${currentLanguage==='en'?'text-left':'text-center'}`}>
-            {games[counter].gameName}
-          </h3>
-          <div className={`${styles.buttons} bg-transparent`}>
-            <a href="#!" className={`${styles.btn} ${styles.btnDownload} ${currentLanguage==='en'?'rounded-l-lg':'rounded-r-lg'}`}>
-              {t("slider-downloadNow")}
-            </a>
-            <a
-              href="#!"
-              className={`${styles.btn} ${styles.btnWishlist} ${currentLanguage==='en'?'rounded-r-lg':'rounded-l-lg'}`}
-              style={{ fontWeight: "700" }}
-            >
-              +
-            </a>
-          </div>
-        </div>
-      </div>
-      {/* section end */}
-
-      <ul
-      className="hidden sm:flex flex-col justify-center "
-        // className={styles.gamelist}
-        // style={{ display: "flex", justifyContent: "center" }}
-      >
-        {games.map((game, index) => (
-          <li
-            key={game.id}
-            onClick={onClick}
-            // className='h-auto'
+    <div>
+      {loader ? (
+        <Spinner />
+      ) : (
+        <div className={`${styles.sliderWrapper} bg-transparent`}>
+          {/* section start 0_0 */}
+          <div //
+            className={`${styles.featured} w-fit bg-transparent ${
+              currentLanguage === "en" ? "mr-10" : "ml-10"
+            }`}
             style={{
-              display: "flex",
-              height: "70px",
-              marginBottom: "10px",
-              justifyContent: "center",
+              backgroundImage: `url(${games[counter].Photos[0]})`,
+              width: "70vw",
+              height: "80vh",
+              padding: "20px",
+              borderRadius: "30px",
             }}
-            
           >
-            {/* className='w-48' */}
-            <div
-              id={index}
-              className={`${styles.game} ${
-                index === counter ? styles.current : ""
-              } rounded-lg pb-4 text-white text-xs flex flex-col items-center border border-gray-200 shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700`}
-              style={{ width: "100%", height: "100%" }}
-            >
-              <img
-                src={game.Photos[0]}
-                alt="game"
-                style={{
-                  width: "50px",
-                  height: "55px",
-                  marginRight: "10px",
-                  marginLeft: "5px",
-                  marginTop: "10px",
-                }}
-                className="rounded-lg mt-3 md:m-0"
-              />
-              <p className="text-sm w-full h-full bg-transparent flex items-center text-left sm:text-center ">
-                {game.gameName}
-              </p>
+            <div className={`${styles.itemText} `}>
+              <h3
+                className={`bg-transparent text-white text-xl ${
+                  currentLanguage === "en" ? "text-left" : "text-center"
+                }`}
+              >
+                {games[counter].gameName}
+              </h3>
+              <div className={`${styles.buttons} bg-transparent`}>
+                <a
+                  href="#!"
+                  className={`${styles.btn} ${styles.btnDownload} ${
+                    currentLanguage === "en" ? "rounded-l-lg" : "rounded-r-lg"
+                  }`}
+                >
+                  {t("slider-downloadNow")}
+                </a>
+                <a
+                  href="#!"
+                  className={`${styles.btn} ${styles.btnWishlist} ${
+                    currentLanguage === "en" ? "rounded-r-lg" : "rounded-l-lg"
+                  }`}
+                  style={{ fontWeight: "700" }}
+                >
+                  +
+                </a>
+              </div>
             </div>
-          </li>
-        ))}
-      </ul>
+          </div>
+          {/* section end */}
+
+          <ul
+            className="hidden sm:flex flex-col justify-center "
+            // className={styles.gamelist}
+            // style={{ display: "flex", justifyContent: "center" }}
+          >
+            {epicGames.map((game, index) => (
+              <Link
+                to={`gameDetails/${game._id}`}
+                key={game.id}
+                onClick={onClick}
+                // className='h-auto'
+                style={{
+                  display: "flex",
+                  height: "70px",
+                  marginBottom: "10px",
+                  justifyContent: "center",
+                }}
+              >
+                {/* className='w-48' */}
+                <div
+                  id={index}
+                  className={`${styles.game} ${
+                    index === counter ? styles.current : ""
+                  } rounded-lg pb-4 text-white text-xs flex flex-col items-center border border-gray-200 shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700`}
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  <img
+                    src={game.Photos[0]}
+                    alt="game"
+                    style={{
+                      width: "50px",
+                      height: "55px",
+                      marginRight: "10px",
+                      marginLeft: "5px",
+                      marginTop: "10px",
+                    }}
+                    className="rounded-lg mt-3 md:m-0"
+                  />
+                  <p className="text-sm w-full h-full bg-transparent flex items-center text-left sm:text-center ">
+                    {game.gameName}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

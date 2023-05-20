@@ -18,6 +18,7 @@ function Navbar() {
     { name: t("cart"), to: "/cart", current: false },
     { name: t("account"), to: "/account/setting", current: false },
   ];
+
   // var Search_GameName="";
   var [Search_GameName, setSearch_GameName] = useState("");
   const [isHidden22, setIsHidden22] = useState(false);
@@ -49,6 +50,7 @@ function Navbar() {
                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
+
                 <form class="flex items-center pl-6">
                   <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -97,6 +99,7 @@ function Navbar() {
                             ></path>
                           </svg>
                         </div>
+                        {/* search input */}
                         <input
                           type="text"
                           onChange={(event) => {
@@ -110,7 +113,6 @@ function Navbar() {
                           required
                           value={Search_GameName}
                         ></input>
-                        {/* value={Search_GameName} */}
                       </div>
                     </form>
 
@@ -132,22 +134,23 @@ function Navbar() {
                   </div>
                 </div>
               </div>
+              {/* search typing */}
               <section
                 style={{ backgroundColor: "#2a2a2a" }}
                 className={` ${
                   isHidden22 && Search_GameName ? "block" : "hidden"
-                } absolute mt-26 z-10 left-9  w-fit origin-top-right rounded-md p-4`}
+                } absolute mt-24 z-10 left-9 w-fit origin-top-right rounded-md p-4`}
               >
-                <p className="text-white "> {Search_GameName}</p>
-                <p className="text-white "> {Search_GameName}</p>
-                <p className="text-white "> {Search_GameName}</p>
+                <p className="text-white"> {Search_GameName}</p>
               </section>
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="">
+            {" "}
+            {/* sm:hidden */}
             <div className="space-y-1 px-2 pb-3 pt-2">
-              {/* {navigation.map((item) => (
+              {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
                   as="a"
@@ -162,7 +165,7 @@ function Navbar() {
                 >
                   {item.name}
                 </Disclosure.Button>
-              ))} */}
+              ))}
             </div>
           </Disclosure.Panel>
         </div>

@@ -42,7 +42,6 @@ const Discover = () => {
 
       <section className="w-full h-full place-items-center mt-16 mb-5 descvSec py-5 md:px-10 md:mb-0 lg:px-20">
         <div className="flex Container md:flex-row ">
-
           {/* section 1 */}
           <div className="mb-7 Section md:grid-cols-2 topSec1">
             <div className="flex mb-7 w-full header">
@@ -101,8 +100,7 @@ const Discover = () => {
         </div>
       </section>
 
-      <section className="descvSec py-5 md:px-10 lg:px-20 CatalogClas" 
-      >
+      <section className={`descvSec py-3 md:px-10 lg:px-12 CatalogClas`}>
         <Catalog></Catalog>
       </section>
     </section>
