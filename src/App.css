@@ -1,7 +1,11 @@
 .main {
   align-items: center;
-  background-color: rgb(18, 18, 18);
-  /* width: 100%; */
+  width: 100%;
+  /* min-height: 100vh;
+  display: flex;
+  flex-direction: column; */
+  /* justify-content: center;
+  justify-items: center; */
 }
 body {
   width: full;

@@ -88,7 +88,7 @@ const GameDetails = () => {
               </div>
             </div>
           </div>
-          <div className="w-1/5 max-sm:w-full h-full ">
+          <div className="w-1/5 max-sm:w-full h-full  ">
             {/* {game.photos[0]} */}
             <GameCheckout game={game} />
           </div>

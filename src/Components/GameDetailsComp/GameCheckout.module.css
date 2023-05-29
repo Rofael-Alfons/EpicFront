@@ -23,7 +23,6 @@ h4 {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 100%;
   padding: 10px 0;
 }
 .leftCol {

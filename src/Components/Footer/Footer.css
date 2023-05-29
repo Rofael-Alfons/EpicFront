@@ -16,10 +16,10 @@
   display: grid;
 }
 
-.footer {
+/* .footer {
   padding: 128px 0;
   border-top: 1px solid #eee;
-}
+} */
 
 .grid--footer {
   grid-template-columns: 1.5fr 1.5fr 3fr;

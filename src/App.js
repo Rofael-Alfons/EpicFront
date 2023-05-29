@@ -20,7 +20,7 @@ function App() {
   const loggedIn = useSelector((state) => state.epic.loggedIn);
   console.log(loggedIn);
   return (
-    <div className="main">
+    <div className="main ">
       <Header></Header>
       {/* <Browse></Browse> */}
       {/* <GameDetails /> */}
@@ -41,7 +41,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

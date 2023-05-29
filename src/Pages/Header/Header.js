@@ -247,15 +247,15 @@ const Header = () => {
 
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="/wishlist"
+                              <Link
+                                to="/wishlist"
                                 className={`${classNames(
                                   active ? " text-white" : "text-inherit",
                                   "block px-4 py-2 text-sm"
                                 )} text-center text-xs`}
                               >
                                 {t("signIn-wishlist")}
-                              </a>
+                              </Link>
                             )}
                           </Menu.Item>
                           <form method="POST" action="#">
